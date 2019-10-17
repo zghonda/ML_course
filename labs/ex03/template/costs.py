@@ -7,7 +7,7 @@ import numpy as np
 def compute_loss_mse(y, tx, w):
     """MAE"""
     e = y - tx.dot(w)
-    return (np.linalg.norm(e) ** 2) / len(y)
+    return 0.5 * (np.linalg.norm(e) ** 2) / len(y)
 
 
 def compute_loss_mae(y, tx, w):
