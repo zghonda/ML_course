@@ -34,6 +34,8 @@ def load_image(path):
     return imageio.imread(path)
 
 
+
+
 def build_distance_matrix(data, mu):
     """build a distance matrix.
     return
