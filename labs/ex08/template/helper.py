@@ -3,7 +3,7 @@
 import os
 import shutil
 import numpy as np
-from scipy import misc
+import imageio
 
 
 def load_data():
@@ -31,17 +31,19 @@ def build_dir(dir):
 
 def load_image(path):
     """use the scipy.misc to load the image."""
-    return misc.imread(path)
+    return imageio.imread(path)
 
 
 def build_distance_matrix(data, mu):
     """build a distance matrix.
-
-    row of the matrix represents the data point,
-    column of the matrix represents the k-th cluster.
+    return
+        distance matrix:
+            row of the matrix represents the data point,
+            column of the matrix represents the k-th cluster.
     """
-    # ***************************************************
-    # INSERT YOUR CODE HERE
-    # TODO: build distance matrix
-    # ***************************************************
-    raise NotImplementedError
+    distance_list = []
+    num_cluster, _ = mu.shape
+    for k_th in range(num_cluster):
+        sum_squares = np.sum(np.square(data - mu[k_th, :]), axis=1)
+        distance_list.append(sum_squares)
+    return np.array(distance_list).T
